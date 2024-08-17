@@ -5,46 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ваша очередь решать загадки</title>
-    <style>
-        body {
-            background-image: url('https://i.ibb.co/qBRYz61/image.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            margin: 20px;
-        }
-        .download-link {
-            color: red;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        .hint-container {
-            margin-top: 10px;
-        }
-    </style>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <div style="background-color: rgba(255, 255, 255, 0.8); padding: 10px; margin: 10px 0;">
-        <input type="text" id="inputField" placeholder="Введите ваш ответ">
-        <span>охотник желает знать</span>
-        <button id="submitButton">ответить</button>
+    <div>
+        <input type="text" id="answer" placeholder="Введите слово">
+        <span>охотник желает знать, где сидит фазан</span>
     </div>
+    <button id="submit-button">ответить</button>
 
-    <py-script>
-    from pyscript import Element
+    <py-script output="console">
+        from js import console, window
 
-    def check_answer(*args):
-        answer = Element("inputField").element.value.lower()
-        if answer == "каждый":
-            window.location.href = "https://www.role-me.ru"
+        def check_answer(event):
+            input_value = Element("answer").element.value.lower()
+            if input_value == "каждый":
+                window.location.href = "https://raz00m-team.github.io/2/second"
+            else:
+                console.log("Неправильный ответ. Попробуйте снова.")
 
-    Element("submitButton").element.onclick = check_answer
+        Element("submit-button").element.onclick = check_answer
     </py-script>
 </body>
 </html>
-,
